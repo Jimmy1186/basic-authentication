@@ -11,12 +11,12 @@ app.use(express.urlencoded({ extended: false }))
 app.use(cookieParser("cookie"));
 
 // /////////////cookie ///////////////////
+app.use(express.static(__dirname + '/public'));
+// app.get("/", (req, res) => {
+//   res.cookie("role","user")
+//   // res.sendFile(path.join(__dirname, "/index.html"));
 
-app.get("/", (req, res) => {
-  res.cookie("role","user")
-  res.sendFile(path.join(__dirname, "/index.html"));
-
-});
+// });
 
 app.get('/cookie',(req,res,next)=>{
   if (req.cookies.role !== "admin") {
@@ -87,7 +87,7 @@ app.post("/logout",(req,res)=>{
 
 ////JWT ////////////////////////////////
 
-
+app.use(express.static("public"))
 app.use(express.json())
 
 
